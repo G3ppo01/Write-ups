@@ -21,6 +21,9 @@ NOTE: DO NOT directly interact with any domains and IP addresses in this challen
 
 <p>First, we need to start the THM virtual machine, so that we can search the pcap file with Wireshark and answer the questions.<br>
 Once the VM is ready, let's open the "carnage.pcap" in the /home/ubuntu/Desktop/Analysis/ directory. </p>
+
 <h3>Question 1 - What was the date and time for the first HTTP connection to the malicious IP?</h3>
 <p>I set a filter to <strong>"http"</strong> and add a column to have the requested date format</p>
 <img src="https://github.com/G3ppo01/Write-ups/assets/170022041/544d9d95-e501-4214-b266-2cbd7f13a275">
+
+<h3>Question 2 - What is the name of the zip file that was downloaded?</h3>
