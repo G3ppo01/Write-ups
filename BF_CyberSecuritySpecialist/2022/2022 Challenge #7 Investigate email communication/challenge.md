@@ -10,6 +10,7 @@
 - ![image](https://github.com/user-attachments/assets/3a6e790b-b7a4-4ec8-83ea-e85da8da9c7d)
 - We can tell that mbox09.prod.qlmail.ch has a forwarding rule in place for emails addressed to bkchagent@quickline.ch
 - The LMTP protocol is used for delivering emails from an email server to a local delivery agent or mailbox system, but not between MTAs
+- The header X-Sieve-Redirected-From indicates that the mail was redirected
 
 ## Task 3
 - Look at the dns mx record for the first sender with https://mxtoolbox.com/
