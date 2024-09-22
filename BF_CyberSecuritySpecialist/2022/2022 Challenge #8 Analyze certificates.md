@@ -112,5 +112,6 @@ Not valid after:  Sep 20 13:05:53 2025 GMT
     - Depends on the context and use, but the exam specifies " business context"
   - CRL + OCSP missing
   - Weak signature algorithm or public key
+  - DNS name not matching with CN
  
  
