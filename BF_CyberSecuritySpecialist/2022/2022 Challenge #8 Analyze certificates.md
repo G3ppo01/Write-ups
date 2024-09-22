@@ -101,8 +101,16 @@ Not valid after:  Sep 20 13:05:53 2025 GMT
 - Find security improvements to do, for exemple:
   - Disable TLS 1.0
   - Enable HSTS
-  - Disable weak cyphers (128 key)
+  - Disable weak cyphers (128 bit key)
 
  ## Task 3
  
-
+- Download the CSV and check for:
+  - Expired/Revoked certificates
+  - Wildcard/subwildcard domains
+  - Selfsigned certs and R3 (Let's Encrypt) are considered weak in the exam
+    - Depends on the context and use, but the exam specifies " business context"
+  - CRL + OCSP missing
+  - Weak signature algorithm or public key
+ 
+ 
