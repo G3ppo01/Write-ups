@@ -98,20 +98,35 @@ Issuer:   Root CA
 Not valid before: Sep 20 13:05:53 2024 GMT
 Not valid after:  Sep 20 13:05:53 2025 GMT
 ```
-- Find security improvements to do, for exemple:
+- Find security improvements to do, for example:
   - Disable TLS 1.0
   - Enable HSTS
-  - Disable weak cyphers (128 bit key)
+  - Disable weak cyphers (128-bit key)
 
  ## Task 3
  
 - Download the CSV and check for:
   - Expired/Revoked certificates
-  - Wildcard/subwildcard domains
+  - Wildcard/sub-wildcard domains
   - Selfsigned certs and R3 (Let's Encrypt) are considered weak in the exam
     - Depends on the context and use, but the exam specifies " business context"
   - CRL + OCSP missing
   - Weak signature algorithm or public key
   - DNS name not matching with CN
- 
+
+ ## Task 4
+ - Step 1: Verify root CA
+   - command: `Openssl verify -verbose -CAfile chain.pem root_ca.pem`
+   - Root CA is self-signed, so no CRL. We use the chain file to check it.
+- Step 2: Verify intermediate CA
+   - command: `Openssl verify -verbose -CAfile chain.pem root_ca.pem`
+   - In some setups (like SwissSign, or this one), intermediate certificates do not have a CRL, as they work like the root CA.
+- Step 3: Check leaf certificate:
+   - command: `openssl verify -crl_download -crl_check -verbose -CAfile chain.pem cert.pem`
+   - Download the CRL and check the certificate.
+   - Normally, we would see that the certificate was revoked, but the CRL expired in 2023, and I'm doing this exercise in september 2024.
+   - I got an error message:
+     ![image](https://github.com/user-attachments/assets/a8bc8fbe-a9e3-4ef4-b91a-914d0fc162cf)
+   - I downloaded the CRL manually, and checking it, I found the cert.pem serial number as revoked.
+     
  
