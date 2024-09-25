@@ -1,13 +1,13 @@
 # [CSS Exam 2023 - 07] Analyze certificates
 ## Task 1
 - Scann the host with nmap: `nmap -Pn -p1-65535 --script ssl-cert [IP]`
-![image](https://github.com/user-attachments/assets/da1a8807-25ba-4a84-88d1-6081f921a9f4)
+- ![image](https://github.com/user-attachments/assets/da1a8807-25ba-4a84-88d1-6081f921a9f4)
 - Open ports with certificate: 4443; 8080; 9990; 30443
 - Port 4786; 8081; 21021 are open but no certificate.
 
 ## Task 2
 - I will scan port 4443 with the command `sslscan [IP:PORT]` on a Kali VM to get the full certificate:
-![image](https://github.com/user-attachments/assets/93521f8a-d354-4432-a259-1a08cc88eb49)
+- ![image](https://github.com/user-attachments/assets/93521f8a-d354-4432-a259-1a08cc88eb49)
 
 - We can see some security improvements to do by looking at it:
 1. Disable SSL v3
@@ -37,7 +37,7 @@ Let's start with the root CA certificate, going to to the end certificate.
 - Root CA is self-signed. Ss we don't need to download any CRL.
 - We can check it against the chain:
 - `openssl verify -verbose -CAfile chain.pem root_ca.pem`
-![image](https://github.com/user-attachments/assets/d62f3e24-d4aa-4d79-a7e6-e93a2daddceb)
+- ![image](https://github.com/user-attachments/assets/d62f3e24-d4aa-4d79-a7e6-e93a2daddceb)
 
 ### Intermediate 1 and 2
 - This time, let's try downloading the CRL:
@@ -46,7 +46,7 @@ Let's start with the root CA certificate, going to to the end certificate.
 - The certificates themself lack CRL information. (Could be because of certificate stapling). Let's check them like we did with the root CA certificate:
 - ![image](https://github.com/user-attachments/assets/43538f8b-eb61-4656-b2f7-75fb8736330a)
 
-###☻ Leaf certificate
+### Leaf certificate
 - Let's reuse the command that permits to download the CRL:
 - ![image](https://github.com/user-attachments/assets/01da075f-08aa-4023-b65d-537f4165d6e5)
 - The certificate is expired, therefore it is not trustworthy
