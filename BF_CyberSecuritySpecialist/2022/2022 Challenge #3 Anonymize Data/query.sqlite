@@ -1,0 +1,11 @@
+SELECT
+	t_customer.gender AS gender,
+	substr(t_customer.lastname, 1, 2) || '--------' AS lastname,
+	substr(t_customer.birthdate, -4) AS birthyear,
+	substr(t_location.zip, 1, 2) || '00' AS zip,
+	t_customer_status.status AS status
+FROM
+	t_customer
+JOIN t_location ON t_customer.fk_location = t_location.pk_location
+JOIN t_customer_status ON t_customer.fk_customer_status = t_customer_status.pk_customer_status;
+	
